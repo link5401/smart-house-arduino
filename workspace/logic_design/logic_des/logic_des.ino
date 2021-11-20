@@ -2,44 +2,34 @@
 #include <Wire.h>
 #include <LiquidCrystal_I2C.h>
 #include <DHT.h>
+#include <dht_nonblocking.h>
 #include "timer.h"
 #include "button_reading.h"
 #include "fsm.h"
+#include "display.h"
+
+//
+//#define BLYNK_PRINT DebugSerial
+//#include <SoftwareSerial.h>
+//SoftwareSerial DebugSerial(2, 3); // RX, TX
+//
+
+#include <BlynkSimpleStream.h>
 #define ledPin 13
-const int DHTPIN = 8;      
-const int DHTTYPE = DHT11; 
-DHT dht(DHTPIN, DHTTYPE);
-LiquidCrystal_I2C lcd(0x27, 16, 2);
- float humid = 0;
- float temp = 0;
-void read_info(void ){
-   humid = dht.readHumidity();
-   temp = dht.readTemperature();
-}
-void display_info(void ){
-    lcd.setCursor(0,0);
-    lcd.print("Temperature: ");
-    lcd.print(temp);
-    lcd.setCursor(0,1);
-    lcd.print("Humidity: ");
-    lcd.print(humid);
-}
-void display_init(){
-     lcd.init();
-    lcd.backlight();
-    Serial.begin(9600);
-    dht.begin();
-}
-
-
+#define SDCARD_CS 4
+//#define BLYNK_TEMPLATE_ID   "TMPLyoutuC_H"
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
+ char auth[] = "NEGIHQRiIs4o_LT2XCFuiAjMJ3vE6bp7";
 
 void setup()
 {
-  //pinmode
+
+   Serial.begin(9600);
+   Blynk.begin(Serial, auth);
   pinMode(ledPin, OUTPUT);  
-  setTimer1(10000);
+  pinMode(12, OUTPUT);
+  pinMode(11, OUTPUT);
+  setTimer1(1000);
   // initialize timer1 : interupt each 10ms
   timer_init();
   display_init();
@@ -48,14 +38,13 @@ void setup()
   //button_init();
 }
 
-
-
 bool LED = false;
 void loop(){
+   Blynk.run();
     if(isTimer1() == 1) {
       read_info();
       display_info();
-      setTimer1(10000);      
+      setTimer1(1000);      
     }
     if(isTimer2() == 1) toggle_LED_every_2s();  
     fsm_for_button();

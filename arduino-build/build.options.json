@@ -1,0 +1,12 @@
+{
+  "additionalFiles": "..,..,..,..,..,..,..,..",
+  "builtInLibrariesFolders": "E:\\arduino-software\\arduino-nightly\\libraries",
+  "builtInToolsFolders": "E:\\arduino-software\\arduino-nightly\\tools-builder,E:\\arduino-software\\arduino-nightly\\hardware\\tools\\avr",
+  "compiler.optimization_flags": "",
+  "customBuildProperties": "build.warn_data_percentage=75,runtime.tools.arduinoOTA.path=E:\\arduino-software\\arduino-nightly\\hardware\\tools\\avr,runtime.tools.arduinoOTA-1.3.0.path=E:\\arduino-software\\arduino-nightly\\hardware\\tools\\avr,runtime.tools.avrdude.path=E:\\arduino-software\\arduino-nightly\\hardware\\tools\\avr,runtime.tools.avrdude-6.3.0-arduino17.path=E:\\arduino-software\\arduino-nightly\\hardware\\tools\\avr,runtime.tools.avr-gcc.path=E:\\arduino-software\\arduino-nightly\\hardware\\tools\\avr,runtime.tools.avr-gcc-7.3.0-atmel3.6.1-arduino7.path=E:\\arduino-software\\arduino-nightly\\hardware\\tools\\avr",
+  "fqbn": "arduino:avr:uno",
+  "hardwareFolders": "E:\\arduino-software\\arduino-nightly\\hardware",
+  "otherLibrariesFolders": "E:\\arduino-software\\sketchbook-location\\libraries",
+  "runtime.ide.version": "10817",
+  "sketchLocation": "E:\\arduino-software\\workspace\\logic_design\\logic_des\\logic_des.ino"
+}
