@@ -37,7 +37,15 @@ void setup()
   pinMode(12, INPUT_PULLUP);
   //button_init();
 }
-
+BLYNK_WRITE(V1) //Button Widget is writing to pin V1
+{
+  int pinData = param.asInt(); 
+  if(pinData==1){
+    digitalWrite(13, HIGH);
+  }else{
+    digitalWrite(13, LOW);
+  }
+}
 bool LED = false;
 void loop(){
    Blynk.run();
