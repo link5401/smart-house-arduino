@@ -4,3 +4,7 @@ Tried to simulate IOT on proteus and this IDE on PC.
 Approach failed.
 Possible causes : Connection.
 Might consider doing the project on my laptop to verify that.
+6:00 PM 11/21/2021
+Successfully implemented IOT connection between proteus and my phone through Blynk
+Apps that helped: Blynk, Virtual COM.
+Reason that it didn't  work on PC: no WIFI.
