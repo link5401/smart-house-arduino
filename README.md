@@ -2,6 +2,7 @@
 smart house implementation, simulated with Proteus and C
 ##  Proteus
 We use a DHT11 and an LED to simulate the sensor and the display-ing of the values in Proteus
+
 <img src="https://imgur.com/JGb94Hq.png">
 ## Arduino code
 We use a timer structure to operate the functions of each component. 
