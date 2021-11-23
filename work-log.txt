@@ -8,3 +8,7 @@ Might consider doing the project on my laptop to verify that.
 Successfully implemented IOT connection between proteus and my phone through Blynk
 Apps that helped: Blynk, Virtual COM.
 Reason that it didn't  work on PC: no WIFI.
+
+3:08 AM 11/24/2021
+Idea: Simulate section of the house
+Problem: Re-arranging stuff, not sure how to place the components.

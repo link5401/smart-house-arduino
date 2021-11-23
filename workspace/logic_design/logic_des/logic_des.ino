@@ -24,8 +24,8 @@
 void setup()
 {
 
-   Serial.begin(9600);
-   Blynk.begin(Serial, auth);
+  // Serial.begin(9600);
+  // Blynk.begin(Serial, auth);
   pinMode(ledPin, OUTPUT);  
   pinMode(12, OUTPUT);
   pinMode(11, OUTPUT);
@@ -48,7 +48,7 @@ BLYNK_WRITE(V1) //Button Widget is writing to pin V1
 }
 bool LED = false;
 void loop(){
-   Blynk.run();
+   //Blynk.run();
     if(isTimer1() == 1) {
       read_info();
       display_info();
