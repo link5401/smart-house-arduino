@@ -7,12 +7,12 @@
 #include "button_reading.h"
 #include "fsm.h"
 #include "display.h"
-
+#include "pir.h"
 //
 //#define BLYNK_PRINT DebugSerial
 //#include <SoftwareSerial.h>
 //SoftwareSerial DebugSerial(2, 3); // RX, TX
-//
+
 
 #include <BlynkSimpleStream.h>
 #define ledPin 13
@@ -23,11 +23,10 @@
 
 void setup()
 {
+//
 
-  // Serial.begin(9600);
-  // Blynk.begin(Serial, auth);
+  pir_setup();
   pinMode(ledPin, OUTPUT);  
-  pinMode(12, OUTPUT);
   pinMode(11, OUTPUT);
   setTimer1(1000);
   // initialize timer1 : interupt each 10ms
@@ -35,25 +34,30 @@ void setup()
   display_init();
   
   pinMode(12, INPUT_PULLUP);
+     Serial.begin(9600);
+   Blynk.begin(Serial, auth);
   //button_init();
 }
-BLYNK_WRITE(V1) //Button Widget is writing to pin V1
-{
-  int pinData = param.asInt(); 
-  if(pinData==1){
-    digitalWrite(13, HIGH);
-  }else{
-    digitalWrite(13, LOW);
-  }
-}
+//BLYNK_WRITE(V1) //Button Widget is writing to pin V1
+//{
+//  int pinData = param.asInt(); 
+//  if(pinData==1){
+//    digitalWrite(13, HIGH);
+//  }else{
+//    digitalWrite(13, LOW);
+//  }
+//}
 bool LED = false;
 void loop(){
-   //Blynk.run();
+
+    pir_run();
     if(isTimer1() == 1) {
+      
       read_info();
       display_info();
       setTimer1(1000);      
     }
     if(isTimer2() == 1) toggle_LED_every_2s();  
     fsm_for_button();
+       Blynk.run();
 }
