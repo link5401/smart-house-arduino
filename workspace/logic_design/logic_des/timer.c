@@ -18,6 +18,7 @@ ISR(TIMER1_COMPA_vect){
   timer1_run();
   button_reading();
   timer2_run();
+  timerDoor_run();
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -56,4 +57,20 @@ void timer2_run(){
 
 uint8_t isTimer2(){
     return (timer2_flag == 1) ? 1 : 0;  
+}
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+static uint16_t timerDoor_counter = 0;
+static uint8_t timerDoor_flag = 0;
+void setTimerDoor(uint16_t DURATION){
+    timerDoor_counter = DURATION/TIMER_CYCLE;
+    timerDoor_flag = 0;  
+}
+void timerDoor_run(){
+    if(timerDoor_counter > 0){
+      timerDoor_counter--;
+      if(timerDoor_counter == 0) timerDoor_flag = 1;  
+    }  
+}
+uint8_t isTimerDoor(){
+    return (timerDoor_flag == 1) ? 1 : 0;  
 }
