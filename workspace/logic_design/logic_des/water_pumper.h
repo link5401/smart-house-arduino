@@ -3,9 +3,9 @@
 #endif
 #include "Arduino.h"
 
-void pir_setup();
-void pir_run();
-void reset_door();
+void pump_run();
+
+
 #ifdef __cplusplus
 }
 #endif

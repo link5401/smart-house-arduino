@@ -13,7 +13,9 @@ void read_info(){
    humid = dht.readHumidity();
    temp = dht.readTemperature();
 }
-
+float get_humid_value(){
+    return humid;
+}
 void display_info(){
     lcd.setCursor(0,0);
     lcd.print("Temperature: ");
