@@ -9,7 +9,7 @@ const int DHTPIN = 8;
 const int DHTTYPE = DHT11; 
 DHT dht(DHTPIN, DHTTYPE);
 //DHT_nonblocking ndht(DHTPIN, DHTTYPE);
-LiquidCrystal_I2C lcd(0x27, 16, 2);
+LiquidCrystal_I2C lcd(0x27, 16, 4);
  float humid = 0;
  float temp = 0;
  
@@ -29,7 +29,7 @@ void display_info(){
     lcd.print("Humidity: ");
     lcd.print(humid);
         Blynk.virtualWrite(V6,temp);
-      
+        Blynk.virtualWrite(V5, humid);  
 }
 
 void display_init(){
@@ -60,4 +60,13 @@ BLYNK_WRITE(V1) //Button Widget is writing to pin V1
 void iot_run(){
     Blynk.run();
     
+}
+#define sensor A1
+int read_moist(){
+    int value = analogRead(A1);
+    value = map(value, 0, 1023, 0, 100);
+    lcd.setCursor(0,2);
+    lcd.print("Moist:");
+    lcd.print(value);
+    return value;   
 }

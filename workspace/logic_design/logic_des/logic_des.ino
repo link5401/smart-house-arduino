@@ -12,7 +12,7 @@
 #include "iot.h"
 #define PUMPER 10 
 #define BUTTON 12
-
+#define MOIST_SENSOR A1
 //
 //#define BLYNK_PRINT DebugSerial
 //#include <SoftwareSerial.h>
@@ -32,8 +32,8 @@ void setup()
 
   pir_setup();
   iot_setup();
-  pinMode(ledPin, OUTPUT);  
-
+  
+  pinMode(MOIST_SENSOR, INPUT);
   pinMode(PUMPER, OUTPUT);
   setTimer1(1000);
   // initialize timer1 : interupt each 10ms
@@ -46,6 +46,7 @@ void setup()
 }
 bool LED = false;
 void loop(){
+   
     iot_run();
     pir_run();
     pump_run();
@@ -57,6 +58,7 @@ void loop(){
     }
     if(isTimer2() == 1) toggle_LED_every_2s();  
     if(isTimerDoor() == 1){ reset_door();}
+
     fsm_for_button();
     
 

@@ -20,6 +20,11 @@ uint8_t isTimer2(void );
 void setTimerDoor(uint16_t DURATION);
 void timerDoor_run();
 uint8_t isTimerDoor();
+////////////////////////////////////////////////////////////////////////////////////////////////
+void setTimerSeg(uint16_t DURATION);
+void timerSeg_run();
+uint8_t isTimerSeg();
+
 #ifdef __cplusplus
 }
 #endif
